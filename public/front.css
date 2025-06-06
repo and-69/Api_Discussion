@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Área de respuestas */
+#respuestas {
+    background-color: #f9f9f9;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 25px;
+    min-height: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+}
+
+#respuesta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Mensajes */
+.message {
+    padding: 12px 15px;
+    border-radius: 8px;
+    max-width: 80%;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message.expert1 {
+    align-self: flex-start;
+    background-color: #e3f2fd;
+    border-left: 4px solid #1976d2;
+}
+
+.message.expert2 {
+    align-self: flex-end;
+    background-color: #ffebee;
+    border-right: 4px solid #d32f2f;
+    text-align: right;
+}
+
+.message-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.message.expert1 .message-header {
+    color: #1976d2;
+}
+
+.message.expert2 .message-header {
+    color: #d32f2f;
+    justify-content: flex-end;
+}
+
+/* Botones */
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+}
+
+.btn-primary {
+    background-color: #4285f4;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #3367d6;
+}

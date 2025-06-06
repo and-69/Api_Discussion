@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Diálogo entre Expertos Opuestos</title>
+    <link rel="stylesheet" href="front.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Debate</h1>
+        <div id="respuestas">
+            <div id="respuesta"></div>
+        </div>
+        <div class="botones">
+            <button class="btn btn-primary" onclick="consExpert1()">Generar Respuesta Experto 1</button>
+            <button class="btn btn-primary" onclick="consExpert2()">Generar Respuesta Experto 2</button>
+            <button class="btn btn-primary" onclick="limpiarHist()" id="borrarbd">Limpiar Historial</button>
+            <button class="btn btn-primary" onclick="descargarPdf()">Descargar pdf</button>
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="front.js"></script>
+</body>
+</html>
