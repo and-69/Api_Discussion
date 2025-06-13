@@ -15,4 +15,3 @@ mongoose.connect(process.env.MONGO_CNX)
 discussion.listen(process.env.PORT, () => {
     console.log(`Listening the port ${process.env.PORT}`);
 })
-

@@ -4,23 +4,25 @@ import experto from "../models/modelo.js";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEN_KEY });
 
+async function obtenerHistorialCompleto() {
+  return await experto.find().sort({ createdAt: 1 });
+}
+
 async function experto1(req, res) {
   try {
-    const lastConver = await experto.find().sort({ createdAt: 1 });
-    let historial = lastConver.map(item => ({
+    const historialCompleto = await obtenerHistorialCompleto();
+    let historial = historialCompleto.map(item => ({
       role: item.role,
       content: item.content
     }));
 
-    const allMessages = await experto.find().sort({ createdAt: -1 });
-    const lastExpert2Msg = allMessages.find(msg =>
-      msg.content !== lastConver?.content
+    const lastExpert2Msg = historialCompleto.reverse().find(msg => 
+      msg.role === "model" 
     );
 
-    const contexto = lastExpert2Msg ?
-      `Refuta este argumento: "${lastExpert2Msg.content}"` :
-      "Inicia el debate";
-
+    const contexto = lastExpert2Msg ? 
+      `Refuta este argumento: "${lastExpert2Msg.content}"` : 
+      "Inicia el debate sobre el tema";
 
     const chat = ai.chats.create({
       model: "gemini-2.0-flash",
@@ -37,14 +39,14 @@ async function experto1(req, res) {
     const newEntry = new experto({
       role: "model",
       content: resp1.text,
+      experto: "experto1"
     });
 
     await newEntry.save();
 
     res.json({
       respuesta1: resp1.text,
-      message: "Respuesta generada y guardada en la base de datos",
-      history: newEntry.history
+      message: "Respuesta generada por Experto 1"
     });
 
   } catch (error) {
@@ -55,25 +57,21 @@ async function experto1(req, res) {
 
 async function experto2(req, res) {
   try {
-    const lastConver = await experto.find().sort({ createdAt: 1 });
-    let historial = lastConver.map(item => ({
+    const historialCompleto = await obtenerHistorialCompleto();
+    let historial = historialCompleto.map(item => ({
       role: item.role,
       content: item.content
     }));
 
-    const allMessages = await experto.find().sort({ createdAt: -1 });
-    const lastExpert1Msg = allMessages.find(msg =>
-      msg.content !== lastConver?.content
+    // Obtener último mensaje del Experto 1 (role: "model" y con el prompt1)
+    const lastExpert1Msg = historialCompleto.reverse().find(msg => 
+      msg.role === "model"
     );
 
-    if (!lastExpert1Msg && historial.length === 0) {
-      return res.status(400).json({ error: "Debe iniciar el debate con Experto1" });
-    }
-
-    const contexto = lastExpert1Msg ?
-      `Como maquiavelo, refuto específicamente: "${lastExpert1Msg.content}"` :
-      "";
-
+    // Contexto dinámico
+    const contexto = lastExpert1Msg ? 
+      `Contraargumenta esto: "${lastExpert1Msg.content}"` : 
+      "Inicia el debate sobre el tema";
 
     const chat = ai.chats.create({
       model: "gemini-2.0-flash",
@@ -84,23 +82,21 @@ async function experto2(req, res) {
     });
 
     const resp2 = await chat.sendMessage({
-      message: contexto
+      message: contexto,
     });
 
     const newEntry = new experto({
       role: "model",
       content: resp2.text,
+      experto: "experto2" // Añade este campo para distinguir entre expertos
     });
 
     await newEntry.save();
 
     res.json({
       respuesta2: resp2.text,
-      message: "Respuesta generada y guardada en la base de datos",
-      history: newEntry.history,
-
+      message: "Respuesta generada por Experto 2"
     });
-
 
   } catch (error) {
     console.error("Error en experto2:", error);

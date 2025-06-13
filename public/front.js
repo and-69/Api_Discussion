@@ -25,7 +25,6 @@ const limpiarHist = async () => {
         throw new Error('Error al limpiar el historial');
     }
     const result = await response.json();
-    console.log(result.message);
 }
 const descargarPdf = () => {
     const { jsPDF } = window.jspdf;
