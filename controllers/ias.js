@@ -63,12 +63,12 @@ async function experto2(req, res) {
       content: item.content
     }));
 
-    // Obtener último mensaje del Experto 1 (role: "model" y con el prompt1)
+   
     const lastExpert1Msg = historialCompleto.reverse().find(msg => 
       msg.role === "model"
     );
 
-    // Contexto dinámico
+   
     const contexto = lastExpert1Msg ? 
       `Contraargumenta esto: "${lastExpert1Msg.content}"` : 
       "Inicia el debate sobre el tema";
@@ -88,7 +88,7 @@ async function experto2(req, res) {
     const newEntry = new experto({
       role: "model",
       content: resp2.text,
-      experto: "experto2" // Añade este campo para distinguir entre expertos
+      experto: "experto2" 
     });
 
     await newEntry.save();
