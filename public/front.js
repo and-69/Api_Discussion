@@ -3,7 +3,7 @@ const consExpert1 = async () => {
     const data = await res.json()
     const respuest = document.getElementById('respuesta')
     const nuevaRespuest = document.createElement('p')
-    nuevaRespuest.textContent = 'Experto 1: ' + data.respuesta1;
+    nuevaRespuest.textContent = 'Sócrates: ' + data.respuesta1;
     respuest.appendChild(nuevaRespuest)
     respuest.scrollTop = respuest.scrollHeight;
 }
@@ -12,7 +12,7 @@ const consExpert2 = async () => {
     const data = await res.json()
     const respuest = document.getElementById('respuesta')
     const nuevaRespuest = document.createElement('p')
-    nuevaRespuest.innerHTML = 'Experto 2: ' + data.respuesta2;
+    nuevaRespuest.innerHTML = 'Maquiavelo: ' + data.respuesta2;
     respuest.appendChild(nuevaRespuest)
     respuest.scrollTop = respuest.scrollHeight;
 }

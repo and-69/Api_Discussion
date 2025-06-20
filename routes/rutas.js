@@ -1,5 +1,5 @@
 import  {Router}  from "express";
-import {experto1,experto2} from "../controllers/ias.js"
+import {experto1,experto2} from "../services/gemini.js";
 import { getListarchat, getListarExpert, postAgregarExpert, putModificarExpert, delElimnarExpert,deltHistorial } from "../controllers/peticiones.js";
 
 const router = new Router;
