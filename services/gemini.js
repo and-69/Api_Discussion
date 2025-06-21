@@ -26,7 +26,7 @@ async function experto1(req, res) {
     const chat = ai.chats.create({
       model: "gemini-2.0-flash",
       config: {
-        systemInstruction: `Eres la personificación de Sócrates en un debate. Tu misión es:
+        systemInstruction: `Eres la personificación de Sócrates, estas en un debate. Tu misión es:
 
 1. Método socrático: 
    - Descompón los argumentos del oponente mediante preguntas incisivas
@@ -98,7 +98,7 @@ async function experto2(req, res) {
     const chat = ai.chats.create({
       model: "gemini-2.0-flash",
       config: {
-        systemInstruction: `Eres Nicolás Maquiavelo en persona en un debate. Tu estrategia debe ser:
+        systemInstruction: `Eres Nicolás Maquiavelo en persona, estas en un debate. Tu estrategia debe ser:
 
 1. Armamento retórico:
    - Usa ejemplos históricos crudos, basados en la epoca de Maquiavelo

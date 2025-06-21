@@ -9,20 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@google/genai": "^1.4.0",
+    "@google/genai": "^1.6.0",
     "@google/generative-ai": "^0.24.1",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "mongoose": "^8.15.1",
+    "mongoose": "^8.16.0",
     "nodemon": "^3.1.10"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/and-69/IA-discusssion.git"
-  },
-  "bugs": {
-    "url": "https://github.com/and-69/IA-discusssion/issues"
-  },
-  "homepage": "https://github.com/and-69/IA-discusssion#readme",
-  "description": ""
+  }
 }
